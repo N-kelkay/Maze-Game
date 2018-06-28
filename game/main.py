@@ -75,8 +75,12 @@ def setup_maze(level):
                 pen.goto(screen_x, screen_y)
                 pen.stamp()
 
+            if character == "P":
+                player.goto(screen_x, screen_y)
+
 
 pen = Pen()
+player = Player()
 
 setup_maze(levels[1])
 
