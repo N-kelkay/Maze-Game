@@ -18,13 +18,14 @@ class Pen(turtle.Turtle):
         self.penup()
         self.speed(0)
 
-    class Player(turtle.Turtle):
-        def __init__(self):
-            turtle.Turtle.__init__(self)
-            self.shape("square")
-            self.color("blue")
-            self.penup()
-            self.speed(0)
+
+class Player(turtle.Turtle):
+    def __init__(self):
+        turtle.Turtle.__init__(self)
+        self.shape("square")
+        self.color("blue")
+        self.penup()
+        self.speed(0)
 
 
 # Create levels list
@@ -33,7 +34,7 @@ levels = [""]
 # Define first level
 level_1 = [
         "XXXXXXXXXXXXXXXXXXXXXXXXX"
-        "X  XXXXXXX          XXXXX"
+        "XP XXXXXXX          XXXXX"
         "X  XXXXXXX  XXXXXX  XXXXX"
         "X       XX  XXXXXX  XXXXX"
         "X       XX  XXX        XX"
