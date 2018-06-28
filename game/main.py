@@ -3,17 +3,14 @@ import turtle
 
 # Top left block of maze is (-288, 288), top right (288,288), bottom left (-288, -288), bottom right (288, -288)
 
-win = turtle.Turtle()
-
+win = turtle.Screen()
 win.bgcolor("black")
-
 win.title("A Maze Game")
-
 win.setup(700, 700)
 
 
 # create Pen
-class pen(turtle.Turtle):
+class Pen(turtle.Turtle):
     def __init__(self):
         turtle.Turtle.__init__(self)
         self.shape("square")
@@ -57,17 +54,24 @@ level_1 = [
 
 levels.append(level_1)
 
+
 def setup_maze(level):
-        for y in range(len(level)):
-                for x in range(len(level[y])):
-                        character = level[y][x]
+    for y in range(len(level)):
+        for x in range(len(level[y])):
 
-                        screen_x = -288 + (x * 24)
-                        screen_y = 288 - (y * 24)
+            character = level[y][x]
 
-                        if character == "X":
-                                pen.goto(screen_x, screen_y)
-                                pen.stamp()
+            screen_x = -288 + (x * 24)
+            screen_y = 288 - (y * 24)
+
+            if character == "X":
+                pen.goto(screen_x, screen_y)
+                pen.stamp()
 
 
-turtle.done()
+pen = Pen()
+
+setup_maze(levels[1])
+
+while True:
+    pass
