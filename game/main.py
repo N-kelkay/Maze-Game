@@ -58,7 +58,6 @@ levels.append(level_1)
 def setup_maze(level):
     for y in range(len(level)):
         for x in range(len(level[y])):
-
             character = level[y][x]
 
             screen_x = -288 + (x * 24)
