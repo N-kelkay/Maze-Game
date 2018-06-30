@@ -27,11 +27,37 @@ class Player(turtle.Turtle):
         self.penup()
         self.speed(0)
 
-def go_up(self):
-    #self.goto(self.xcor,self.ycor+16)
-    move_to_x=player.xcor()
-    move_to_y=player.ycor()+24
+    def go_up(self):
+        # self.goto(self.xcor,self.ycor+16)
+        move_to_x = player.xcor()
+        move_to_y = player.ycor() + 24
 
+        if (move_to_x, move_to_y) not in walls:
+            self.goto(move_to_x, move_to_y)
+
+    def go_down(self):
+        # self.goto(self.xcor,self.ycor-16)
+        move_to_x = player.xcor()
+        move_to_y = player.ycor() - 24
+
+        if (move_to_x, move_to_y) not in walls:
+            self.goto(move_to_x, move_to_y)
+
+    def go_left(self):
+        # self.goto(self.xcor-16,self.ycor)
+        move_to_x = player.xcor() - 24
+        move_to_y = player.ycor()
+
+        if (move_to_x, move_to_y) not in walls:
+            self.goto(move_to_x, move_to_y)
+
+    def go_right(self):
+        # self.goto(self.xcor+16,self.ycor)
+        move_to_x = player.xcor() + 24
+        move_to_y = player.ycor()
+
+        if (move_to_x, move_to_y) not in walls:
+            self.goto(move_to_x, move_to_y)
 
 
 # Create levels list
