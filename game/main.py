@@ -65,32 +65,78 @@ levels = [""]
 
 # Define first level
 level_1 = [
-        "XXXXXXXXXXXXXXXXXXXXXXXXX"
-        "XP XXXXXXX          XXXXX"
-        "X  XXXXXXX  XXXXXX  XXXXX"
-        "X       XX  XXXXXX  XXXXX"
-        "X       XX  XXX        XX"
-        "XXXXXX  XX  XXX        XX"
-        "XXXXXX  XX  XXXXXX  XXXXX"
-        "XXXXXX  XX    XXXX  XXXXX"
-        "X  XXX        XXXX  XXXXX"
-        "X  XXX  XXXXXXXXXXXXXXXXX"
-        "X         XXXXXXXXXXXXXXX"
-        "X                XXXXXXXX"
-        "XXXXXXXXXXXX     XXXXX  X"
-        "XXXXXXXXXXXXXXX  XXXXX  X"
-        "XXX  XXXXXXXXXX         X"
-        "XXX                     X"
-        "XXX         XXXXXXXXXXXXX"
-        "XXXXXXXXXX  XXXXXXXXXXXXX"
-        "XXXXXXXXXX              X"
-        "XX   XXXXX              X"
-        "XX   XXXXXXXXXXXXX  XXXXX"
-        "XX    XXXXXXXXXXXX  XXXXX"
-        "XX           XXXX       X"
-        "XXXX                    X"
-        "XXXXXXXXXXXXXXXXXXXXXXXXX"
-        ]
+"XXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXX XXXXXX       XX    X",
+"XXX   XXXX       XXX    X",
+"XX  P  XX        XXX    X",
+"XXX     X    XXXXXXX    X",
+"XXX         XXXXXXX     X",
+"XXXX    X    XXXX       X",
+"XXX    XX     XXX    XXXX",
+"XX    XXX     XXX     XXX",
+"X     XXX     XXXXX     X",
+"XX    XXXXX   XXXXXX    X",
+"XXX  XXXX     XXX       X",
+"X   XXXXX    XXXX       X",
+"X    XXXXXXXXXXXXXXX    X",
+"XX      XXXXXXXXXXXX    X",
+"XXX              XXXX   X",
+"XXXX             XXXX   X",
+"XXXXXXXXXXXXX    XXX    X",
+"XXXXXXXXXXXXX    XXX    X",
+"XXX       XXX    XXX    X",
+"X                XXX    X",
+"XXXX       XXXXXXXX     X",
+"XXXXXX   XXXXXXXX      XX",
+"X                     XXX",
+"X                   XXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXX",
+]
+level_2=[
+"XXXXXXXXXXXXXXXXXXXXXXXX",
+"XP XX          XXXXXXXXX",
+"X  XX          XXXXXXXXX",
+"X      XXXXXX  XXXXXXXXX",
+"XXX  XXXXXXXX  XXXXXXXXX",
+"XX   XXXX      XXXXXXXXX",
+"X    XXXX      XXXXXXXXX",
+"X  XXXXXXXXXXXXXXXXXXXXX",
+"X  X           XXXXXXXXX",
+"X  XXXXX XXXX  XXXXXXXXX",
+"X        X  X  XXXXXXXXX",
+"XXXXXXX  X     XXXXXXXXX",
+"X        XXXXXXXXXXXXXXX",
+"X  XX          XXXXXXXXX",
+"X  XXXX        XXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXX"
+  ]
+level_3 = [
+"XXXXXXXXXXXXXXXXXXXXXXXX",
+"XP  XXXXXXX          XXX",
+"X           XXXXXX  XXXX",
+"X  XXXXXXX          XXXX",
+"X  XXXXXXXXXXXXXXXXXXXXX",
+"X  XXXXXXXXXXXXXXXXXXXXX",
+"X                      X",
+"XXXXXXX  XXXXXXXXXXXXXXX",
+"XXXXXX   XXXXXXXXXXXXXXX",
+"XXXXXX                 X",
+"XXXXXX   XXXXXXXXXXXXX X",
+"XXXXXX   XXXXXXXXXXXXX X",
+"X                      X",
+"XXXXX    XXXXXXXXXX    X",
+"X        XXXXXXXXXXX XXX",
+"XXXXXX   XXXXXXXXXXX XXX",
+"X                      X",
+"XXXXXX   XXXX   XXXXXXXX",
+"XXXXXX   XXXX   XXXXXXXX",
+"XXXXX    XXXX          X",
+"X               X      X",
+"XXXXXXX   XXXXXXX  XXXXX",
+"XXXXXX    XXXXXXX  XXXXX",
+"XXXXXXXX           XXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXX"
+]
 
 
 levels.append(level_1)
