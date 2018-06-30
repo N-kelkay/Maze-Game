@@ -153,6 +153,7 @@ def setup_maze(level):
             if character == "X":
                 pen.goto(screen_x, screen_y)
                 pen.stamp()
+                walls.append((screen_x, screen_y))
 
             if character == "P":
                 player.goto(screen_x, screen_y)
@@ -161,7 +162,17 @@ def setup_maze(level):
 pen = Pen()
 player = Player()
 
+walls = []
+
 setup_maze(levels[1])
+print(walls)
+
+turtle.listen()
+turtle.onkey(player.go_left,'Left')
+turtle.onkey(player.go_right,'Right')
+turtle.onkey(player.go_up,'Up')
+turtle.onkey(player.go_down,'Down')
+win.tracer(0)
 
 while True:
-    pass
+    win.update()
