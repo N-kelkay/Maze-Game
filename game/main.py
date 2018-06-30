@@ -1,5 +1,5 @@
 import turtle
-
+import math
 
 # Top left block of maze is (-288, 288), top right (288,288), bottom left (-288, -288), bottom right (288, -288)
 
@@ -26,6 +26,12 @@ class Player(turtle.Turtle):
         self.color("blue")
         self.penup()
         self.speed(0)
+
+def go_up(self):
+    #self.goto(self.xcor,self.ycor+16)
+    move_to_x=player.xcor()
+    move_to_y=player.ycor()+24
+
 
 
 # Create levels list
