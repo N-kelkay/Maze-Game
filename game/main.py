@@ -127,6 +127,17 @@ class Enemy(turtle.Turtle):
             dx = 0
             dy = 0
 
+
+        if self.is_close(player):
+            if player.xcor() < self.xcor():
+                self.direction = "left"
+            elif player.xcor() > self.xcor():
+                self.direction = "right"
+            elif player.ycor() < self.ycor():
+                self.direction = "down"
+            elif player.ycor() > self.ycor():
+                self.direction = "up"
+
         move_to_x = self.xcor() + dx
         move_to_y = self.ycor() + dy
 
@@ -136,6 +147,9 @@ class Enemy(turtle.Turtle):
             self.direction = random.choice(["up", "down", "left", "right"])
 
         turtle.ontimer(self.move, t=random.randint(100, 300))
+
+
+
 
     def destroy(self):
         self.goto(2000, 2000)
@@ -174,7 +188,7 @@ level_1 = [
     "X                   XXXXX",
     "XXXXXXXXXXXXXXXXXXXXXXXXX",
 ]
-level_2=[
+level_2 = [
     "XXXXXXXXXXXXXXXXXXXXXXXX",
     "XP XX          XXXXXXXXX",
     "X  XX E        XXXXXXXXX",
