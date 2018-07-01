@@ -1,5 +1,6 @@
 import turtle
 import math
+import random
 
 # Top left block of maze is (-288, 288), top right (288,288), bottom left (-288, -288), bottom right (288, -288)
 
@@ -7,12 +8,14 @@ win = turtle.Screen()
 win.bgcolor("black")
 win.title("A Maze Game")
 win.setup(700, 700)
+win.tracer(0)
 
 # Register shapes
-turtle.register_shape("Red-brick-wall.gif")
-turtle.register_shape("CatGifLeft.gif")
-turtle.register_shape("CatGifRight.gif")
-turtle.register_shape("TreasureBox.gif")
+
+images = ["Red-brick-wall.gif", "CatGifLeft.gif", "CatGifRight.gif", "TreasureBox.gif",
+          "MainCharacterR.gif", "MainCharacterL.gif", "EnemyPlayerR.gif", "EnemyPlayerL.gif"]
+for image in images:
+    turtle.register_shape(image)
 
 
 # create Pen
@@ -28,7 +31,7 @@ class Pen(turtle.Turtle):
 class Player(turtle.Turtle):
     def __init__(self):
         turtle.Turtle.__init__(self)
-        self.shape("CatGifLeft.gif")
+        self.shape("MainCharacterR.gif")
         self.color("blue")
         self.penup()
         self.speed(0)
@@ -55,7 +58,7 @@ class Player(turtle.Turtle):
         move_to_x = player.xcor() - 24
         move_to_y = player.ycor()
 
-        self.shape("CatGifLeft.gif")
+        self.shape("MainCharacterL.gif")
 
         if (move_to_x, move_to_y) not in walls:
             self.goto(move_to_x, move_to_y)
@@ -65,7 +68,7 @@ class Player(turtle.Turtle):
         move_to_x = player.xcor() + 24
         move_to_y = player.ycor()
 
-        self.shape("CatGifRight.gif")
+        self.shape("MainCharacterR.gif")
 
         if (move_to_x, move_to_y) not in walls:
             self.goto(move_to_x, move_to_y)
@@ -94,6 +97,27 @@ class Treasure(turtle.Turtle):
     def destroy(self):
         self.goto(2000, 2000)
         self.hideturtle()
+
+
+class Enemy(turtle.Turtle):
+    def __init__(self, x, y):
+        turtle.Turtle.__init__(self)
+        self.shape("TreasureBox.gif")
+        self.color("red")
+        self.penup()
+        self.speed(0)
+        self.gold = -25
+        self.goto(x, y)
+        self.direction = random.choice(["up", "down", "left", "right"])
+
+    def move(self):
+        if self.direction == "up":
+            dx = 0
+            dy = 24
+        elif self.direction == "down":
+            dx = 0
+            dy = -24
+
 
 
 # Create levels list
