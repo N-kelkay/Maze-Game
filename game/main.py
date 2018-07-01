@@ -8,6 +8,9 @@ win.bgcolor("black")
 win.title("A Maze Game")
 win.setup(700, 700)
 
+# Register shapes
+turtle.register_shape("Red-brick-wall.gif")
+
 
 # create Pen
 class Pen(turtle.Turtle):
@@ -180,6 +183,7 @@ def setup_maze(level):
 
             if character == "X":
                 pen.goto(screen_x, screen_y)
+                pen.shape("Red-brick-wall.gif")
                 pen.stamp()
                 walls.append((screen_x, screen_y))
 
