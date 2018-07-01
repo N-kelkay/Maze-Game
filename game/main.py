@@ -2,6 +2,10 @@ import turtle
 import math
 import random
 
+
+# @author Natenael Kelkay
+
+
 # Top left block of maze is (-288, 288), top right (288,288), bottom left (-288, -288), bottom right (288, -288)
 
 win = turtle.Screen()
@@ -28,6 +32,7 @@ class Pen(turtle.Turtle):
         self.speed(0)
 
 
+# The Main Player
 class Player(turtle.Turtle):
     def __init__(self):
         turtle.Turtle.__init__(self)
@@ -84,6 +89,7 @@ class Player(turtle.Turtle):
             return False
 
 
+# The Treasure that needs to be captured by the player
 class Treasure(turtle.Turtle):
     def __init__(self, x, y):
         turtle.Turtle.__init__(self)
@@ -99,6 +105,7 @@ class Treasure(turtle.Turtle):
         self.hideturtle()
 
 
+# The enemy that tries to attach the player
 class Enemy(turtle.Turtle):
     def __init__(self, x, y):
         turtle.Turtle.__init__(self)
