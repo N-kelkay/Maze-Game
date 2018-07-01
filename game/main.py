@@ -13,7 +13,7 @@ win.tracer(0)
 # Register shapes
 
 images = ["Red-brick-wall.gif", "CatGifLeft.gif", "CatGifRight.gif", "TreasureBox.gif",
-          "MainCharacterR.gif", "MainCharacterL.gif", "EnemyPlayerR.gif", "EnemyPlayerL.gif"]
+          "MainCharacterR.gif", "MainCharacterL.gif", "EnemyPlayer.gif"]
 for image in images:
     turtle.register_shape(image)
 
@@ -102,7 +102,7 @@ class Treasure(turtle.Turtle):
 class Enemy(turtle.Turtle):
     def __init__(self, x, y):
         turtle.Turtle.__init__(self)
-        self.shape("EnemyPlayerR.gif")
+        self.shape("EnemyPlayer.gif")
         self.color("red")
         self.penup()
         self.speed(0)
@@ -120,11 +120,9 @@ class Enemy(turtle.Turtle):
         elif self.direction == "left":
             dx = -24
             dy = 0
-            self.shape("EnemyPlayerL.gif")
         elif self.direction == "right":
             dx = 24
             dy = 0
-            self.shape("EnemyPlayerR.gif")
         else:
             dx = 0
             dy = 0
