@@ -28,21 +28,6 @@ class Player(turtle.Turtle):
         self.speed(0)
         self.gold = 0
 
-
-class Treasure(turtle.Turtle):
-    def __init__(self, x, y):
-        turtle.Turtle.__init__(self)
-        self.shape("circle")
-        self.color("gold")
-        self.penup()
-        self.speed(0)
-        self.gold = 100
-        self.goto(x, y)
-
-    def destroy(self):
-        self.goto(2000, 2000)
-        self.hideturtle()
-
     def go_up(self):
         # self.goto(self.xcor,self.ycor+16)
         move_to_x = player.xcor()
@@ -74,6 +59,31 @@ class Treasure(turtle.Turtle):
 
         if (move_to_x, move_to_y) not in walls:
             self.goto(move_to_x, move_to_y)
+
+    def is_collision(self, other):
+        a = self.xcor()-other.xcor()
+        b = self.ycor()-other.ycor()
+        distance = math.sqrt((a ** 2) + (b ** 2))
+
+        if distance < 5:
+            return True
+        else:
+            return False
+
+
+class Treasure(turtle.Turtle):
+    def __init__(self, x, y):
+        turtle.Turtle.__init__(self)
+        self.shape("circle")
+        self.color("gold")
+        self.penup()
+        self.speed(0)
+        self.gold = 100
+        self.goto(x, y)
+
+    def destroy(self):
+        self.goto(2000, 2000)
+        self.hideturtle()
 
 
 # Create levels list
@@ -196,4 +206,13 @@ turtle.onkey(player.go_down,'Down')
 win.tracer(0)
 
 while True:
+
+    for treasure in treasures:
+        if player.is_collision(treasure):
+
+            player.gold += treasure.gold
+            print("Player Gold: {}".format(player.gold))
+            treasure.destroy()
+            treasures.remove(treasure)
+
     win.update()
