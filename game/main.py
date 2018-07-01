@@ -12,7 +12,7 @@ win.tracer(0)
 
 # Register shapes
 
-images = ["Red-brick-wall.gif", "CatGifLeft.gif", "CatGifRight.gif", "TreasureBox.gif",
+images = ["Red-brick-wall.gif", "TreasureBox.gif",
           "MainCharacterR.gif", "MainCharacterL.gif", "EnemyPlayer.gif"]
 for image in images:
     turtle.register_shape(image)
