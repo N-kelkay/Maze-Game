@@ -12,6 +12,7 @@ win.setup(700, 700)
 turtle.register_shape("Red-brick-wall.gif")
 turtle.register_shape("CatGifLeft.gif")
 turtle.register_shape("CatGifRight.gif")
+turtle.register_shape("TreasureBox.gif")
 
 
 # create Pen
@@ -54,6 +55,8 @@ class Player(turtle.Turtle):
         move_to_x = player.xcor() - 24
         move_to_y = player.ycor()
 
+        self.shape("CatGifLeft.gif")
+
         if (move_to_x, move_to_y) not in walls:
             self.goto(move_to_x, move_to_y)
 
@@ -61,6 +64,8 @@ class Player(turtle.Turtle):
         # self.goto(self.xcor+16,self.ycor)
         move_to_x = player.xcor() + 24
         move_to_y = player.ycor()
+
+        self.shape("CatGifRight.gif")
 
         if (move_to_x, move_to_y) not in walls:
             self.goto(move_to_x, move_to_y)
@@ -79,7 +84,7 @@ class Player(turtle.Turtle):
 class Treasure(turtle.Turtle):
     def __init__(self, x, y):
         turtle.Turtle.__init__(self)
-        self.shape("circle")
+        self.shape("TreasureBox.gif")
         self.color("gold")
         self.penup()
         self.speed(0)
