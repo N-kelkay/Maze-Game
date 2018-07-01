@@ -39,24 +39,24 @@ class Player(turtle.Turtle):
 
     def go_up(self):
         # self.goto(self.xcor,self.ycor+16)
-        move_to_x = player.xcor()
-        move_to_y = player.ycor() + 24
+        move_to_x = self.xcor()
+        move_to_y = self.ycor() + 24
 
         if (move_to_x, move_to_y) not in walls:
             self.goto(move_to_x, move_to_y)
 
     def go_down(self):
         # self.goto(self.xcor,self.ycor-16)
-        move_to_x = player.xcor()
-        move_to_y = player.ycor() - 24
+        move_to_x = self.xcor()
+        move_to_y = self.ycor() - 24
 
         if (move_to_x, move_to_y) not in walls:
             self.goto(move_to_x, move_to_y)
 
     def go_left(self):
         # self.goto(self.xcor-16,self.ycor)
-        move_to_x = player.xcor() - 24
-        move_to_y = player.ycor()
+        move_to_x = self.xcor() - 24
+        move_to_y = self.ycor()
 
         self.shape("MainCharacterL.gif")
 
@@ -65,8 +65,8 @@ class Player(turtle.Turtle):
 
     def go_right(self):
         # self.goto(self.xcor+16,self.ycor)
-        move_to_x = player.xcor() + 24
-        move_to_y = player.ycor()
+        move_to_x = self.xcor() + 24
+        move_to_y = self.ycor()
 
         self.shape("MainCharacterR.gif")
 
