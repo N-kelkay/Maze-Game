@@ -102,7 +102,7 @@ class Treasure(turtle.Turtle):
 class Enemy(turtle.Turtle):
     def __init__(self, x, y):
         turtle.Turtle.__init__(self)
-        self.shape("TreasureBox.gif")
+        self.shape("EnemyPlayerR.gif")
         self.color("red")
         self.penup()
         self.speed(0)
@@ -117,7 +117,30 @@ class Enemy(turtle.Turtle):
         elif self.direction == "down":
             dx = 0
             dy = -24
+        elif self.direction == "left":
+            dx = -24
+            dy = 0
+            self.shape("EnemyPlayerL.gif")
+        elif self.direction == "right":
+            dx = 24
+            dy = 0
+            self.shape("EnemyPlayerR.gif")
+        else:
+            dx = 0
 
+        move_to_x = self.xcor() + dx
+        move_to_y = self.xcor() + dy
+
+        if(move_to_x, move_to_y) not in walls:
+            self.goto(move_to_x, move_to_y)
+        else:
+            self.direction = random.choice(["up", "down", "left", "right"])
+
+        turtle.ontimer(self.move, t=random.randint(100, 300))
+
+    def destroy(self):
+        self.goto(2000, 2000)
+        self.hideturtle()
 
 
 # Create levels list
@@ -127,17 +150,17 @@ levels = [""]
 level_1 = [
     "XXXXXXXXXXXXXXXXXXXXXXXXX",
     "XXXX XXXXXX       XX    X",
-    "XXX   XXXX       XXX    X",
-    "XX  P  XX        XXX    X",
+    "XXX P XXXX       XXX    X",
+    "XX    XX        XXXT    X",
     "XXX     X    XXXXXXX    X",
-    "XXX         XXXXXXX     X",
-    "XXXX    X    XXXX      TX",
+    "XXXE        XXXXXXX     X",
+    "XXXX    X     XXXX      X",
     "XXX    XX     XXX    XXXX",
     "XX    XXX     XXX     XXX",
     "X     XXX     XXXXX     X",
     "XX    XXXXX   XXXXXX    X",
     "XXX  XXXX     XXX       X",
-    "X   XXXXX    XXXX       X",
+    "X   XXXXX     XXXXE     X",
     "X    XXXXXXXXXXXXXXX    X",
     "XX      XXXXXXXXXXXX    X",
     "XXX              XXXX   X",
@@ -145,7 +168,7 @@ level_1 = [
     "XXXXXXXXXXXXX    XXX    X",
     "XXXXXXXXXXXXX    XXX    X",
     "XXX       XXX    XXX    X",
-    "X                XXX    X",
+    "XE               XXX    X",
     "XXXX       XXXXXXXX     X",
     "XXXXXX   XXXXXXXX      XX",
     "X                     XXX",
@@ -155,51 +178,53 @@ level_1 = [
 level_2=[
     "XXXXXXXXXXXXXXXXXXXXXXXX",
     "XP XX          XXXXXXXXX",
-    "X  XX          XXXXXXXXX",
+    "X  XX E        XXXXXXXXX",
     "X      XXXXXX  XXXXXXXXX",
-    "XXX  XXXXXXXX  XXXXXXXXX",
+    "XXX    XXXXXX  XXXXXXXXX",
     "XX   XXXX      XXXXXXXXX",
-    "X    XXXX      XXXXXXXXX",
+    "X    XXXX  E   XXXXXXXXX",
     "X  XXXXXXXXXXXXXXXXXXXXX",
     "X  X           XXXXXXXXX",
     "X  XXXXX XXXX  XXXXXXXXX",
-    "X        X  X  XXXXXXXXX",
-    "XXXXXXX  X    TXXXXXXXXX",
+    "X E      X  X  XXXXXXXXX",
+    "XXXXXXX  X     XXXXXXXXX",
     "X        XXXXXXXXXXXXXXX",
     "X  XX          XXXXXXXXX",
-    "X  XXXX        XXXXXXXXX",
+    "X  XXXX   T    XXXXXXXXX",
     "XXXXXXXXXXXXXXXXXXXXXXXX"
   ]
 level_3 = [
     "XXXXXXXXXXXXXXXXXXXXXXXX",
     "XP  XXXXXXX          XXX",
-    "X           XXXXXX  XXXX",
+    "X          EXXXXXX  XXXX",
     "X  XXXXXXX          XXXX",
     "X  XXXXXXXXXXXXXXXXXXXXX",
     "X  XXXXXXXXXXXXXXXXXXXXX",
-    "X                      X",
+    "X          E           X",
     "XXXXXXX  XXXXXXXXXXXXXXX",
     "XXXXXX   XXXXXXXXXXXXXXX",
     "XXXXXX                 X",
     "XXXXXX   XXXXXXXXXXXXX X",
     "XXXXXX   XXXXXXXXXXXXX X",
-    "X                      X",
+    "X         E            X",
     "XXXXX    XXXXXXXXXX    X",
     "X        XXXXXXXXXXX XXX",
     "XXXXXX   XXXXXXXXXXX XXX",
     "X                      X",
     "XXXXXX   XXXX   XXXXXXXX",
     "XXXXXX   XXXX   XXXXXXXX",
-    "XXXXX    XXXX          X",
-    "X               X     TX",
+    "XXXXX    XXXX   E      X",
+    "X               X      X",
     "XXXXXXX   XXXXXXX  XXXXX",
     "XXXXXX    XXXXXXX  XXXXX",
-    "XXXXXXXX           XXXXX",
+    "XXXXXXXX    T      XXXXX",
     "XXXXXXXXXXXXXXXXXXXXXXXX"
 ]
 
 # Add a treasure list
 treasures = []
+
+enemies = []
 
 levels.append(level_1)
 
@@ -224,6 +249,9 @@ def setup_maze(level):
             if character == "T":
                 treasures.append(Treasure(screen_x, screen_y))
 
+            if character == "E":
+                enemies.append(Enemy(screen_x, screen_y))
+
 
 pen = Pen()
 player = Player()
@@ -240,6 +268,10 @@ turtle.onkey(player.go_up,'Up')
 turtle.onkey(player.go_down,'Down')
 win.tracer(0)
 
+
+for enemy in enemies:
+    turtle.ontimer(enemy.move(), t=250)
+
 while True:
 
     for treasure in treasures:
@@ -249,5 +281,7 @@ while True:
             print("Player Gold: {}".format(player.gold))
             treasure.destroy()
             treasures.remove(treasure)
-
+    for enemy in enemies:
+        if player.is_collision(enemy):
+            print("Player Dies!")
     win.update()
