@@ -106,7 +106,7 @@ class Enemy(turtle.Turtle):
         self.color("red")
         self.penup()
         self.speed(0)
-        self.gold = -25
+        self.gold = 25
         self.goto(x, y)
         self.direction = random.choice(["up", "down", "left", "right"])
 
@@ -127,9 +127,10 @@ class Enemy(turtle.Turtle):
             self.shape("EnemyPlayerR.gif")
         else:
             dx = 0
+            dy = 0
 
         move_to_x = self.xcor() + dx
-        move_to_y = self.xcor() + dy
+        move_to_y = self.ycor() + dy
 
         if(move_to_x, move_to_y) not in walls:
             self.goto(move_to_x, move_to_y)
@@ -259,7 +260,6 @@ player = Player()
 walls = []
 
 setup_maze(levels[1])
-print(walls)
 
 turtle.listen()
 turtle.onkey(player.go_left,'Left')
@@ -268,20 +268,20 @@ turtle.onkey(player.go_up,'Up')
 turtle.onkey(player.go_down,'Down')
 win.tracer(0)
 
-
 for enemy in enemies:
-    turtle.ontimer(enemy.move(), t=250)
+    turtle.ontimer(enemy.move, t=250)
 
 while True:
 
     for treasure in treasures:
         if player.is_collision(treasure):
-
             player.gold += treasure.gold
             print("Player Gold: {}".format(player.gold))
             treasure.destroy()
             treasures.remove(treasure)
+
     for enemy in enemies:
         if player.is_collision(enemy):
             print("Player Dies!")
+
     win.update()
