@@ -127,7 +127,6 @@ class Enemy(turtle.Turtle):
             dx = 0
             dy = 0
 
-
         if self.is_close(player):
             if player.xcor() < self.xcor():
                 self.direction = "left"
@@ -148,8 +147,15 @@ class Enemy(turtle.Turtle):
 
         turtle.ontimer(self.move, t=random.randint(100, 300))
 
+    def is_close(self, other):
+        a = self.xcor() - other.xcor()
+        b = self.ycor() - other.ycor()
+        distance = math.sqrt((a ** 2) + (b ** 2))
 
-
+        if distance < 75:
+            return True
+        else:
+            return False
 
     def destroy(self):
         self.goto(2000, 2000)
