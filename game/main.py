@@ -10,6 +10,8 @@ win.setup(700, 700)
 
 # Register shapes
 turtle.register_shape("Red-brick-wall.gif")
+turtle.register_shape("CatGifLeft.gif")
+turtle.register_shape("CatGifRight.gif")
 
 
 # create Pen
@@ -25,7 +27,7 @@ class Pen(turtle.Turtle):
 class Player(turtle.Turtle):
     def __init__(self):
         turtle.Turtle.__init__(self)
-        self.shape("square")
+        self.shape("CatGifLeft.gif")
         self.color("blue")
         self.penup()
         self.speed(0)
